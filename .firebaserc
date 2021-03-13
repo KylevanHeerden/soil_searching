@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "soil-searching-staging",
+    "production": "soil-searching",
+    "staging": "soil-searching-staging"
+  }
+}
