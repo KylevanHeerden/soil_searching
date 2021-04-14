@@ -2,8 +2,18 @@
   <v-container fluid>
     <v-row justify="start" class="crossRow">
       <v-col cols="12" ms="4" md="4"> </v-col>
-      <v-col cols="12" ms="4" md="4">
+      <v-col cols="12" ms="2" md="2">
         <v-icon medium @click="cancelForm">close</v-icon>
+      </v-col>
+      <v-col cols="12" ms="4" md="4">
+        <v-card flat>
+          <v-img
+            src="@/assets/figma_images/SOIL SEARCHING WHITE LOGO 1.png"
+            alt=""
+            max-height="15%"
+            max-width="15%"
+          />
+        </v-card>
       </v-col>
     </v-row>
     <v-row justify="center" align-content="center" class="containerRow">

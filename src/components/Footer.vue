@@ -11,6 +11,6 @@
 
 <style scoped>
 .container {
-  margin-top: 20rem;
+  margin-top: 12rem;
 }
 </style>
