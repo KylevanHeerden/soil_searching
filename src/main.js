@@ -4,8 +4,17 @@ import router from "./router";
 import store from "./store";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 import vuetify from "./plugins/vuetify";
+import VueGeolocation from "vue-browser-geolocation";
 
 Vue.config.productionTip = false;
+Vue.use(VueGeolocation);
+
+import * as VueGoogleMaps from "vue2-google-maps";
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_FIREBASE_APIKEY2,
+  },
+});
 
 new Vue({
   router,
