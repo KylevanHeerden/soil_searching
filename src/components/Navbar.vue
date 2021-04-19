@@ -12,13 +12,24 @@
       <v-col cols="12" md="9" class="ml-9" align="center">
         <v-row>
           <v-col cols="12" md="2" align-self="center">
-            <h4>Fundraisers</h4>
+            <h4>
+              <a
+                href="https://specializedsoilsea.wixsite.com/my-site-1/copy-of-home"
+              >
+                Fundraisers
+              </a>
+            </h4>
           </v-col>
           <v-col cols="12" md="2" align-self="center">
-            <span class="digdaysSpan"><h4>Dig Days</h4></span>
+            <span class="digdaysSpan"
+              ><h4><a href="">Dig Days</a></h4></span
+            >
           </v-col>
           <v-col cols="12" md="2" align-self="center" align="center">
-            <v-card flat>
+            <v-card
+              flat
+              href="https://specializedsoilsea.wixsite.com/my-site-1"
+            >
               <v-img
                 src="@/assets/figma_images/SOIL SEARCHING WHITE LOGO 1.png"
                 alt=""
@@ -28,12 +39,29 @@
             </v-card>
           </v-col>
           <v-col cols="12" md="2" align-self="center">
-            <h4>Trail Tales</h4>
+            <h4>
+              <a
+                href="https://specializedsoilsea.wixsite.com/my-site-1/trail-tales"
+                >Trail Tales</a
+              >
+            </h4>
           </v-col>
-          <v-col cols="12" md="2" align-self="center"
-            ><h4>Ambassadors</h4></v-col
+          <v-col cols="12" md="2" align-self="center">
+            <h4>
+              <a
+                href="https://specializedsoilsea.wixsite.com/my-site-1/copy-of-ambassadors"
+                >Ambassadors</a
+              >
+            </h4></v-col
           >
-          <v-col cols="12" md="2" align-self="center"><h4>Products</h4></v-col>
+          <v-col cols="12" md="2" align-self="center"
+            ><h4>
+              <a
+                href="https://specializedsoilsea.wixsite.com/my-site-1/copy-of-products"
+                >Products</a
+              >
+            </h4></v-col
+          >
         </v-row>
       </v-col>
     </v-row>
@@ -55,5 +83,10 @@ h4 {
   display: inline-block;
   border-bottom: 3px solid black;
   padding-bottom: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: black !important;
 }
 </style>

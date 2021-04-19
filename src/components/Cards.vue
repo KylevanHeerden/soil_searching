@@ -17,11 +17,10 @@
     <v-icon class="material-icons-outlined">location_on </v-icon>
     <p class="icon-text">{{ digDay.location }}</p>
     <br />
-    <v-icon class="material-icons-outlined">info </v-icon>
-    <p class="space icon-text">{{ digDay.infoPage }}</p>
-    <br />
 
-    <v-btn dark x-small class="button">More details</v-btn>
+    <v-btn dark x-small class="button" :href="digDay.infoPage" target="_blank"
+      >More details</v-btn
+    >
   </v-card>
 </template>
 
