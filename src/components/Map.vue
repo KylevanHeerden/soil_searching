@@ -17,18 +17,13 @@
         <v-row>
           <v-col cols="12" md="5" align-self="center"> </v-col>
           <v-col cols="12" sm="4" md="2">
-            <v-autocomplete
-              v-model="searchInput"
-              :items="locations"
-              label="Search Location"
-              style="display: inline"
-              color="black"
-            ></v-autocomplete>
+            <gmap-autocomplete
+              @place_changed="setPlace"
+              class="gmapAutocomplete"
+            ></gmap-autocomplete>
           </v-col>
           <v-col cols="12" md="4" align="left">
-            <v-btn x-small dark @click="handleSearch(searchInput)"
-              >Search</v-btn
-            >
+            <v-btn x-small dark @click="usePlace">Search</v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -73,7 +68,7 @@
         :position="getPosition(digDay)"
         :clickable="true"
         :draggable="false"
-        :icon="{ url: require('@/assets/figma_images/custom_pin.png') }"
+        :icon="icon"
         @click="handleMarkerClicked(digDay)"
       >
       </gmap-marker>
@@ -150,6 +145,12 @@ export default {
         },
       },
       infoWindowOpened: false,
+      place: null,
+
+      icon: {
+        url: require("@/assets/figma_images/Dig Day Logo.png"),
+        scaledSize: { width: 140, height: 90, f: "px", b: "px" },
+      },
     };
   },
 
@@ -188,19 +189,6 @@ export default {
         lat: parseFloat(this.activeDigDay.coordinates.coordinates.lat),
         lng: parseFloat(this.activeDigDay.coordinates.coordinates.lng),
       };
-    },
-
-    locations() {
-      let locations_array = [];
-      let locations = this.$store.getters.getLocations;
-      locations.map((location) =>
-        locations_array.push({
-          text: location.location_name,
-          value: location.coordinates,
-        })
-      );
-
-      return locations_array;
     },
   },
 
@@ -241,12 +229,15 @@ export default {
       this.infoWindowOpened = false;
     },
 
-    handleSearch(location) {
-      let numberLat = parseFloat(location.lat);
-      let numberLng = parseFloat(location.lng);
-
-      this.myCoordinates.lat = numberLat;
-      this.myCoordinates.lng = numberLng;
+    setPlace(place) {
+      this.place = place;
+    },
+    usePlace() {
+      if (this.place) {
+        this.myCoordinates.lat = this.place.geometry.location.lat();
+        this.myCoordinates.lng = this.place.geometry.location.lng();
+        this.place = null;
+      }
     },
   },
 
@@ -266,7 +257,6 @@ export default {
     }
 
     this.$store.dispatch("getDigDays");
-    this.$store.dispatch("getLocations");
   },
 
   mounted() {
@@ -335,5 +325,11 @@ export default {
 
 .window-heading {
   margin-bottom: 1rem;
+}
+
+.gmapAutocomplete {
+  margin: 0rem 0rem 1rem 0rem;
+  width: 100%;
+  border-bottom: 1px solid black;
 }
 </style>

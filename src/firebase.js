@@ -22,14 +22,10 @@ const db = firebase.firestore();
 // collection references
 // Example: const usersCollection = db.collection('users')
 const digDaysCollection = db.collection("digDays");
-const locationsCollection = db.collection("locations");
-const specializedAffCollection = db.collection("specializedAffilates");
 
 // export utils/refs
 export {
   // Example: userCollection
   db,
   digDaysCollection,
-  locationsCollection,
-  specializedAffCollection,
 };

@@ -36,18 +36,17 @@
               label="Dig Day Name"
               color="black"
             ></v-text-field>
-            <v-select
+            <v-text-field
               v-model="formData.specializedAffiliate"
-              :items="specializedAffs"
               label="Specialized Affiliate"
               color="black"
-            ></v-select>
-            <v-select
-              v-model="formData.coordinates"
-              :items="locations"
-              label="Location"
-              color="black"
-            ></v-select>
+            ></v-text-field>
+
+            <gmap-autocomplete
+              @place_changed="setCoordinates"
+              class="gmapAutocomplete"
+            ></gmap-autocomplete>
+
             <v-menu
               ref="menu"
               v-model="menu"
@@ -120,43 +119,28 @@ export default {
         date: new Date().toISOString().substr(0, 10),
         infoPage: null,
       },
+      place: null,
     };
   },
 
-  computed: {
-    specializedAffs() {
-      let specializedAffs_array = [];
-      let specializedAffs = this.$store.getters.getSpecializedAff;
-      specializedAffs.map((specializedAff) =>
-        specializedAffs_array.push({
-          text: specializedAff.name,
-          value: specializedAff.name,
-        })
-      );
-
-      return specializedAffs_array;
-    },
-
-    locations() {
-      let locations_array = [];
-      let locations = this.$store.getters.getLocations;
-      locations.map((location) =>
-        locations_array.push({
-          text: location.location_name,
-          value: {
-            location_name: location.location_name,
-            coordinates: location.coordinates,
-          },
-        })
-      );
-
-      return locations_array;
-    },
-  },
+  computed: {},
 
   methods: {
+    setCoordinates(place) {
+      this.place = place;
+      console.log(this.place);
+    },
+
     async handleSubmit() {
       this.loading = true;
+
+      this.formData.coordinates = {
+        coordinates: {
+          lat: this.place.geometry.location.lat(),
+          lng: this.place.geometry.location.lng(),
+        },
+        location_name: this.place.formatted_address,
+      };
 
       await db.collection("digDays").add(this.formData);
 
@@ -170,10 +154,9 @@ export default {
     },
   },
 
-  created() {
-    this.$store.dispatch("getSpecializedAff");
-    this.$store.dispatch("getLocations");
-  },
+  created() {},
+
+  mouted() {},
 };
 </script>
 
@@ -204,5 +187,11 @@ export default {
 
 .v-icon {
   color: black;
+}
+
+.gmapAutocomplete {
+  margin: 1rem 0rem 1rem 0rem;
+  width: 100%;
+  border-bottom: 1px solid black;
 }
 </style>
