@@ -6,7 +6,7 @@ Link to a staging version:
 
 https://soil-searching.web.app/
 
-![alt text](https://github.com/KylevanHeerden/soil_searching/blob/main/soil_searching_screenshot.png)
+![alt text](https://github.com/KylevanHeerden/soil_searching/blob/master/soil_searching_screenshot.png)
 
 ## Project setup
 ```
