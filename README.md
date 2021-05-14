@@ -6,6 +6,8 @@ Link to a staging version:
 
 https://soil-searching.web.app/
 
+![alt text](https://github.com/KylevanHeerden/soil_searching/blob/main/pro3.png)
+
 ## Project setup
 ```
 npm install 
@@ -16,5 +18,3 @@ npm install
 ```
 npm run serve
 ```
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
